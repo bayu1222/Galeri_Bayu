@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggle Like Button</title>
+  <style>
+    #toggleButton {
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .liked {
+      background-color:#e74c3c ;
+      color: #fff;
+    }
+
+    .unliked {
+      background-color: #3498db;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<button id="toggleButton" class="liked" onclick="toggleLike()">Like</button>
+<p id="likeCount">0</p>
+
+<script>
+  let likeCount = 0;
+  let liked = false;
+
+  function toggleLike() {
+    if (liked) {
+      likeCount--;
+      liked = false;
+      updateButtonState();
+    } else {
+      likeCount++;
+      liked = true;
+      updateButtonState();
+    }
+
+    updateLikeCount();
+  }
+
+  function updateButtonState() {
+    const button = document.getElementById('toggleButton');
+    button.classList.toggle('liked', liked);
+    button.classList.toggle('unliked', !liked);
+    button.textContent = liked ? 'Unlike' : 'Like';
+  }
+
+  function updateLikeCount() {
+    document.getElementById('likeCount').textContent = likeCount;
+  }
+</script>
+
+</body>
+</html>
